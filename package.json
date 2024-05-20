@@ -1,0 +1,32 @@
+{
+  "name": "vue_hillel_khizhniakanna",
+  "version": "1.0.0",
+  "description": "hillel vue course",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AnnaKhiz/Vue_hillel_KhizhniakAnna.git"
+  },
+  "keywords": [
+    "hillel",
+    "vue"
+  ],
+  "author": "Anna Khizhniak",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AnnaKhiz/Vue_hillel_KhizhniakAnna/issues"
+  },
+  "homepage": "https://github.com/AnnaKhiz/Vue_hillel_KhizhniakAnna#readme",
+  "dependencies": {
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.3.0",
+    "eslint": "^9.3.0",
+    "eslint-plugin-vue": "^9.26.0",
+    "globals": "^15.3.0"
+  }
+}
