@@ -1,5 +1,7 @@
 <template>
-  <CardComponent />
+  <CardComponent title="Card title" />
+  <CardComponent text="Some quick example text to build on the card" />
+  <CardComponent title="Card title" text="Some quick example text to build on the card" />
 </template>
 
 <script>
