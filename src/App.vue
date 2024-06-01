@@ -1,14 +1,14 @@
 <template>
-  <progress-component :percentage='40' />
+  <alert-component text="Some alert text" type="warning"/>
 </template>
 
 <script>
-import ProgressComponent from './components/ProgressComponent.vue'
+import AlertComponent from './components/AlertComponent.vue'
 
 export default {
   name: 'App',
   components: {
-    ProgressComponent
+    AlertComponent
   }
 }
 </script>
