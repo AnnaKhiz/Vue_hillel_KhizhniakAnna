@@ -14,7 +14,7 @@
 
 <script>
 export default {
-  name: 'CardComponent',
+  name: 'ProgressComponent',
   props: {
     percentage: {
       type: Number,
