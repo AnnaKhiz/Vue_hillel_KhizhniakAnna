@@ -1,16 +1,22 @@
 <template>
-  <CardComponent title="Card title" />
-  <CardComponent text="Some quick example text to build on the card" />
-  <CardComponent title="Card title" text="Some quick example text to build on the card" />
+  <definitions-jsx :definitions="definitions"/>
 </template>
 
 <script>
-import CardComponent from './components/CardComponent.vue'
+import DefinitionsJsx from "@/components/Definitions";
 
 export default {
   name: 'App',
   components: {
-    CardComponent
+    DefinitionsJsx,
+  },
+  data() {
+    return {
+      definitions: [
+        { dt: 'one', dd: 'two', id: 1 },
+        { dt: 'another term', dd: 'another description', id: 2 },
+      ]
+    }
   }
 }
 </script>
