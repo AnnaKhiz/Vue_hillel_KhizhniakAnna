@@ -1,16 +1,14 @@
 <template>
-  <CardComponent title="Card title" />
-  <CardComponent text="Some quick example text to build on the card" />
-  <CardComponent title="Card title" text="Some quick example text to build on the card" />
+  <progress-component :percentage='40' />
 </template>
 
 <script>
-import CardComponent from './components/CardComponent.vue'
+import ProgressComponent from './components/ProgressComponent.vue'
 
 export default {
   name: 'App',
   components: {
-    CardComponent
+    ProgressComponent
   }
 }
 </script>
