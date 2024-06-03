@@ -1,14 +1,20 @@
 <template>
-  <alert-component text="Some alert text" type="warning"/>
+  <list-group>
+    <template #list-items>
+      <li class="list-group-item"><p>one</p></li>
+      <li class="list-group-item"><p>two</p></li>
+      <li class="list-group-item"><p>three</p></li>
+    </template>
+  </list-group>
 </template>
 
 <script>
-import AlertComponent from './components/AlertComponent.vue'
+import ListGroup from './components/ListGroup.vue'
 
 export default {
   name: 'App',
   components: {
-    AlertComponent
+    ListGroup
   }
 }
 </script>
