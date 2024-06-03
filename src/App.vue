@@ -1,20 +1,14 @@
 <template>
-  <list-group>
-    <template #list-items>
-      <li class="list-group-item"><p>one</p></li>
-      <li class="list-group-item"><p>two</p></li>
-      <li class="list-group-item"><p>three</p></li>
-    </template>
-  </list-group>
+  <btn-group-component />
 </template>
 
 <script>
-import ListGroup from './components/ListGroup.vue'
+import BtnGroupComponent from './components/BtnGroupComponent.vue'
 
 export default {
   name: 'App',
   components: {
-    ListGroup
+    BtnGroupComponent
   }
 }
 </script>
