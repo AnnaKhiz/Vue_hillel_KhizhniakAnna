@@ -1,14 +1,23 @@
 <template>
-  <btn-group-component />
+  <carousel-component :images="images"/>
 </template>
 
 <script>
-import BtnGroupComponent from './components/BtnGroupComponent.vue'
+import CarouselComponent from './components/CarouselComponent.vue'
 
 export default {
   name: 'App',
   components: {
-    BtnGroupComponent
+    CarouselComponent
+  },
+  data() {
+    return {
+      images: [
+        { link: 'img_1.jpeg', id: 1 },
+        { link: 'img_2.jpg', id: 2 },
+        { link: 'img_3.jpg', id: 3 },
+      ]
+    }
   }
 }
 </script>
@@ -20,6 +29,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
