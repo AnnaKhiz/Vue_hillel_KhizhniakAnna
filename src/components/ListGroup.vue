@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'AlertComponent',
+  name: 'ListGroup',
   props: {
 
   }

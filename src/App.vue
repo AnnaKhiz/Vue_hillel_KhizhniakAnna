@@ -3,7 +3,6 @@
     <template #list-items>
       <li class="list-group-item"><p>one</p></li>
       <li class="list-group-item"><p>two</p></li>
-      <li class="list-group-item"><p>three</p></li>
     </template>
   </list-group>
 </template>
