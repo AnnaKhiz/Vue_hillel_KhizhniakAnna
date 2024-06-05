@@ -1,9 +1,10 @@
 <template>
   <list-group>
-    <template #list-items>
-      <li class="list-group-item"><p>one</p></li>
-      <li class="list-group-item"><p>two</p></li>
-    </template>
+    <p>one</p>
+    <p>two</p>
+    <p>three</p>
+    <p>four</p>
+    <p>five</p>
   </list-group>
 </template>
 
