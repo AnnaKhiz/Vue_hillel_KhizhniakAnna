@@ -55,11 +55,8 @@ export default {
   },
   watch: {
     checkedImageId(newValue) {
-      if (newValue === this.images.length + 1) {
-        this.checkedImageId = 1
-      } else if (newValue < 1) {
-        this.checkedImageId = this.images.length
-      }
+      const lastIndex = this.images.length;
+      this.checkedImageId = newValue > lastIndex ? 1 : newValue < 1 ? lastIndex : newValue;
     }
   }
 }
