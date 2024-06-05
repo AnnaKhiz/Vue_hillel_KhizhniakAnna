@@ -1,26 +1,18 @@
 <template>
-  <ul class="list-group" ref="list">
-    <slot />
+  <ul class="list-group" >
+    <li class="list-group-item" v-for="(node, index) in listNodes" :key="index">
+      <component :is="node.type" v-bind="node.data" v-html="node.children"></component>
+    </li>
   </ul>
 </template>
 
 <script>
 export default {
   name: 'ListGroup',
-  mounted() {
-    const slotItems = this.$refs.list.children;
-    const ul = this.$refs.list;
-
-    const nodes = Array.from(slotItems);
-
-    ul.innerHTML = '';
-
-    nodes.forEach(node => {
-      const li = document.createElement('li');
-      li.classList.add('list-group-item');
-      li.appendChild(node);
-      ul.appendChild(li);
-    });
+  computed: {
+    listNodes() {
+      return this.$slots.default() || []
+    }
   }
 }
 </script>
