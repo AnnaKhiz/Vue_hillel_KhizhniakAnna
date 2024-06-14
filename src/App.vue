@@ -1,22 +1,19 @@
 <template>
-  <carousel-component :images="images"/>
+  <h1 class="my-2">Приклад компонента Collapse</h1>
+  <collapse-component text="Это скрытый текст" :opened="isOpened" @changeOpened="isOpened = $event"/>
 </template>
 
 <script>
-import CarouselComponent from './components/CarouselComponent.vue'
+import CollapseComponent from './components/CollapseComponent.vue'
 
 export default {
   name: 'App',
   components: {
-    CarouselComponent
+    CollapseComponent
   },
   data() {
     return {
-      images: [
-        { link: 'img_1.jpeg', id: 1 },
-        { link: 'img_2.jpg', id: 2 },
-        { link: 'img_3.jpg', id: 3 },
-      ]
+      isOpened: true
     }
   }
 }
