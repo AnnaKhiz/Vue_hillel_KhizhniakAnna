@@ -136,21 +136,14 @@ export default {
     convertStatusValueToText(status) {
       const statusObj = this.statusSelect.find(el => el.value === status);
 
-      if (!statusObj) {
-        return
-      }
+      if (!statusObj) return;
 
       return statusObj.label;
     },
 
     handleDelete(index) {
-      const indexEl = this.notes.findIndex(el => el.id === index);
-
-      if (indexEl === -1) {
-        return
-      }
-
-      this.notes.splice(indexEl, 1);
+      this.removeFromStorage(index);
+      this.notes = this.getFromStorage();
     },
 
     toggleAside() {
@@ -186,15 +179,39 @@ export default {
       }
     },
 
+    setToStorage(notes) {
+      localStorage.setItem('notes', JSON.stringify(notes));
+    },
+
+    getFromStorage() {
+      return JSON.parse(localStorage.getItem('notes'));
+    },
+
+    removeFromStorage(index) {
+      const notes = [...this.notes];
+      const indexEl = notes.findIndex(el => el.id === index);
+
+      if (indexEl === -1) return;
+
+      notes.splice(indexEl, 1);
+
+      this.setToStorage(notes);
+    },
+
     async saveNote() {
       this.isValid = await this.validate();
 
       if (this.isValid) {
+        const newNotesArray = [...this.notes];
 
         let note = {...this.form};
         note.id = Date.now();
 
-        this.notes.push(note);
+        newNotesArray.push(note);
+
+        this.setToStorage(newNotesArray);
+
+        this.notes = this.getFromStorage();
 
         this.form = {
           title: '',
@@ -205,15 +222,7 @@ export default {
     },
   },
   mounted() {
-    localStorage.getItem('notes') ? this.notes = JSON.parse(localStorage.getItem('notes')) : false;
-  },
-  watch: {
-    notes: {
-      handler(newVal) {
-        localStorage.setItem('notes', JSON.stringify(newVal));
-      },
-      deep: true
-    },
+    localStorage.getItem('notes') ? this.notes = this.getFromStorage() : false;
   }
 }
 </script>
