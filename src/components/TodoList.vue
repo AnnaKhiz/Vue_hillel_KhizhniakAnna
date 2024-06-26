@@ -144,16 +144,13 @@ export default {
     },
 
     handleDelete(index) {
-      const notes = [...this.notes];
-      const indexEl = notes.findIndex(el => el.id === index);
+      const indexEl = this.notes.findIndex(el => el.id === index);
 
       if (indexEl === -1) {
         return
       }
 
-      notes.splice(indexEl, 1);
-      localStorage.setItem('notes', JSON.stringify(notes));
-      this.notes = notes;
+      this.notes.splice(indexEl, 1);
     },
 
     toggleAside() {
@@ -199,8 +196,6 @@ export default {
 
         this.notes.push(note);
 
-        localStorage.setItem('notes', JSON.stringify(this.notes));
-
         this.form = {
           title: '',
           description: '',
@@ -211,6 +206,14 @@ export default {
   },
   mounted() {
     localStorage.getItem('notes') ? this.notes = JSON.parse(localStorage.getItem('notes')) : false;
+  },
+  watch: {
+    notes: {
+      handler(newVal) {
+        localStorage.setItem('notes', JSON.stringify(newVal));
+      },
+      deep: true
+    },
   }
 }
 </script>
