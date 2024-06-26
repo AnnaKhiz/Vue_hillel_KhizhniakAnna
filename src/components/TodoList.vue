@@ -1,6 +1,5 @@
 <template>
-  <div class="common-layout">
-    <el-container>
+  <el-container>
       <el-header class="align-l">
         <el-row>
           <el-col :span="24">
@@ -106,7 +105,6 @@
         </el-main>
       </el-container>
     </el-container>
-  </div>
 </template>
 
 
