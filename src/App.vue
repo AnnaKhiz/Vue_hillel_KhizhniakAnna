@@ -1,21 +1,16 @@
 <template>
-  <h1 class="my-2">Приклад компонента Collapse</h1>
-  <collapse-component text="Это скрытый текст" :opened="isOpened" @changeOpened="isOpened = $event"/>
+  <todo-list />
 </template>
 
 <script>
-import CollapseComponent from './components/CollapseComponent.vue'
+
+import TodoList from "@/components/TodoList.vue";
 
 export default {
   name: 'App',
   components: {
-    CollapseComponent
+    TodoList
   },
-  data() {
-    return {
-      isOpened: true
-    }
-  }
 }
 </script>
 
