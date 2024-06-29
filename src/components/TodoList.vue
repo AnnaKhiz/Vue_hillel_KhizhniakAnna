@@ -111,6 +111,7 @@
 <script>
 import { reactive, ref } from 'vue';
 import { validationSchema } from '@/schemas/validationSchema';
+import storage from "@/functions/LStorage";
 
 export default {
   name: 'TodoList',
@@ -139,11 +140,6 @@ export default {
       if (!statusObj) return;
 
       return statusObj.label;
-    },
-
-    handleDelete(index) {
-      this.removeFromStorage(index);
-      this.notes = this.getFromStorage();
     },
 
     toggleAside() {
@@ -179,39 +175,17 @@ export default {
       }
     },
 
-    setToStorage(notes) {
-      localStorage.setItem('notes', JSON.stringify(notes));
-    },
-
-    getFromStorage() {
-      return JSON.parse(localStorage.getItem('notes'));
-    },
-
-    removeFromStorage(index) {
-      const notes = [...this.notes];
-      const indexEl = notes.findIndex(el => el.id === index);
-
-      if (indexEl === -1) return;
-
-      notes.splice(indexEl, 1);
-
-      this.setToStorage(notes);
+    handleDelete(index) {
+      storage.removeItem(index)
+      this.notes = storage.getItems();
     },
 
     async saveNote() {
       this.isValid = await this.validate();
 
       if (this.isValid) {
-        const newNotesArray = [...this.notes];
-
-        let note = {...this.form};
-        note.id = Date.now();
-
-        newNotesArray.push(note);
-
-        this.setToStorage(newNotesArray);
-
-        this.notes = this.getFromStorage();
+        const savedItem = storage.saveItem({...this.form})
+        this.notes.push(savedItem);
 
         this.form = {
           title: '',
@@ -222,7 +196,7 @@ export default {
     },
   },
   mounted() {
-    localStorage.getItem('notes') ? this.notes = this.getFromStorage() : false;
+    storage.getItems() ? this.notes = storage.getItems() : false
   }
 }
 </script>
