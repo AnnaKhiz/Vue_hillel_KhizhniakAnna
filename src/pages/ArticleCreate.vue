@@ -1,6 +1,5 @@
 <template>
   <div class="align-items-start py-3 px-2 bg-body-secondary text-start flex-grow-1">
-    {{getArticles}}
     <form>
       <div class="mb-3">
         <label for="title" class="form-label">Title</label>
@@ -23,10 +22,8 @@
           placeholder="Enter article description..."
           :rows="5"
           @blur="validateField('desc')"
-        >
+        />
 
-        </textarea>
-        {{articles}}
         <div v-if="errors.desc" class="err-message">{{ errors.desc }}</div>
       </div>
       <button type="submit" class="btn btn-primary" @click.prevent="publishArticle">Publish</button>
@@ -91,6 +88,7 @@ export default {
       this.addArticle(this.newArticle)
       this.newArticle = {}
       this.errors = {}
+      this.$router.push('/')
 
     }
   },
