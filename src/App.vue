@@ -1,15 +1,20 @@
 <template>
-  <todo-list />
+
+    <router-link to="/">Main | </router-link>
+    <router-link to="/create">Create | </router-link>
+    <router-link to="/info">Info</router-link>
+
+  <router-view />
 </template>
 
 <script>
 
-import TodoList from "@/components/TodoList.vue";
+
 
 export default {
   name: 'App',
   components: {
-    TodoList
+
   },
 }
 </script>
