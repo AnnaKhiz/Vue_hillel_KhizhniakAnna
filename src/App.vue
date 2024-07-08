@@ -1,19 +1,23 @@
 <template>
+  <div class="container-fluid px-2 d-flex flex-column vh-100">
+    <nav-component />
 
-    <router-link to="/">Main | </router-link>
-    <router-link to="/create">Create | </router-link>
-    <router-link to="/info">Info</router-link>
 
-  <router-view />
+    <router-view />
+  </div>
+
 </template>
 
 <script>
 
 
 
+import NavComponent from "@/components/NavComponent.vue"
+
 export default {
   name: 'App',
   components: {
+    NavComponent
 
   },
 }

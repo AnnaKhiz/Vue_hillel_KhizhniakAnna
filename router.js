@@ -5,14 +5,17 @@ const routes = [
   {
     path: '/',
     component: () => import("@/pages/ArticlesList.vue"),
+    props: true
   },
   {
     path: '/create',
     component: () => import("@/pages/ArticleCreate.vue"),
+    props: true
   },
   {
-    path: '/info',
+    path: '/article/:id',
     component: () => import("@/pages/ArticleInfo.vue"),
+    props: true
   }
 ]
 
