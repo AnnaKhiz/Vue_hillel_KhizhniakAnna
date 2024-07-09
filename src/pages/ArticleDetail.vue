@@ -2,7 +2,7 @@
   <div class="align-items-start py-3 px-2 bg-body-secondary text-start flex-grow-1">
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title fw-bold">{{article.id}}. {{article.title}}</h5>
+        <h5 class="card-title fw-bold">{{article.title}}</h5>
         <h6 class="card-subtitle mb-2 subtitle">{{article.author}}</h6>
         <p class="card-text">{{article.desc}}</p>
       </div>
@@ -11,7 +11,6 @@
 </template>
 
 <script>
-import {mapGetters} from "vuex";
 
 export default {
   name: "ArticleInfo.vue",
@@ -26,24 +25,15 @@ export default {
       article: {}
     }
   },
-  computed: {
-    ...mapGetters([
-      'getArticles'
-    ]),
-  },
   methods: {
-    findArticle() {
-      this.article = this.getArticles.find(el => el.id === +this.id)
-
-      if(!Object.values(this.article).length) {
-        return
-      }
-
-      return this.article
+    async getArticleById() {
+      const response = await fetch(`/api/articles/${this.id}`)
+      const result = await response.json();
+      this.article = await result.data;
     }
   },
   mounted() {
-    this.findArticle()
+    this.getArticleById();
   }
 }
 </script>

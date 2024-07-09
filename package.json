@@ -10,6 +10,11 @@
   "dependencies": {
     "bootstrap": "^5.3.3",
     "core-js": "^3.8.3",
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "history": "^5.3.0",
+    "mongodb": "^6.8.0",
+    "mongoose": "^8.5.0",
     "vue": "^3.2.13",
     "vue-router": "^4.4.0",
     "vue-yup-form": "^1.0.8",

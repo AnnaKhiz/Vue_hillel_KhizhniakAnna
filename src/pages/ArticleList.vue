@@ -1,14 +1,14 @@
 <template>
   <div class="align-items-start py-3 px-2 bg-body-secondary text-start flex-grow-1">
     <button type="button" class="btn btn-secondary mb-3" @click="$router.push('/create')">Add article</button>
-    <div v-if="getArticles.length" class="row">
-      <div class="col-sm-6 mb-3" v-for="article in getArticles" :key="article.id">
+    <div v-if="articles.length" class="row">
+      <div class="col-sm-6 mb-3" v-for="article in articles" :key="article.id">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title fw-bold article-title">{{article.id}}. {{article.title}}</h5>
+            <h5 class="card-title fw-bold article-title">{{article.title}}</h5>
             <h6 class="card-subtitle mb-2 subtitle">{{article.author}}</h6>
             <p class="card-text article-text">{{article.desc}}</p>
-            <button type="button" class="btn btn-outline-secondary mb-3" @click="$router.push(`/article/${article.id}`)">Show more</button>
+            <button type="button" class="btn btn-outline-secondary mb-3" @click="$router.push(`/article/${article._id}`)">Show more</button>
           </div>
         </div>
       </div>
@@ -19,21 +19,23 @@
   </div>
 </template>
 <script >
-import {mapGetters, mapMutations} from "vuex";
-import storage from "@/functions/LStorage"
 
 export default {
   name: "ArticlesList.vue",
-  computed: {
-    ...mapGetters([
-      'getArticles'
-    ])
+  data() {
+    return {
+      articles: []
+    }
   },
   methods: {
-    ...mapMutations(['addArticles'])
+    async getArticle() {
+      const response = await fetch('/api/articles')
+      const result = await response.json()
+      this.articles = result.data
+    },
   },
   mounted() {
-    this.addArticles(storage.getArticles())
+    this.getArticle();
   }
 }
 

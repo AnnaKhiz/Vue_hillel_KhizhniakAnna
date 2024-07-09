@@ -46,23 +46,16 @@
 <script>
 import { reactive, ref } from 'vue';
 import { validationSchema } from '@/schemas/validationSchema';
-import {mapGetters} from "vuex";
-import storage from "@/functions/LStorage";
 export default {
   name: "ArticleCreate.vue",
   data() {
     return {
-      articles: '',
+      articles: [],
       newArticle: reactive({}),
       errors: ref({}),
       isValid: false,
       timeoutId: null
     }
-  },
-  computed:{
-    ...mapGetters([
-      'getArticles'
-    ])
   },
   methods: {
     async validateField(field) {
@@ -96,7 +89,18 @@ export default {
         return
       }
 
-      storage.saveArticle(this.newArticle);
+      const result = await fetch('/api/articles', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(this.newArticle)
+      })
+
+      if (!result) {
+        return
+      }
+
       this.newArticle = {};
       this.errors = {};
       this.$router.push('/');
