@@ -8,9 +8,6 @@
 </template>
 
 <script>
-
-
-
 import NavComponent from "@/components/NavComponent.vue"
 
 export default {

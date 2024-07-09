@@ -104,15 +104,14 @@ export default {
       this.errors = {};
       this.timeoutId = setTimeout(() => {
         this.$router.push('/');
-      }, 2000)
+      }, 2000);
 
     }
   },
+
   beforeUnmount() {
-    clearTimeout(this.timeoutId)
+    clearTimeout(this.timeoutId);
   }
-
-
 }
 </script>
 
