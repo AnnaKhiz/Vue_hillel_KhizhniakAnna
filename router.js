@@ -1,20 +1,19 @@
 import {createRouter, createWebHistory} from "vue-router";
 
-
 const routes = [
   {
     path: '/',
-    component: () => import("@/pages/ArticlesList.vue"),
+    component: () => import("@/pages/ArticleList.vue"),
     props: true
   },
   {
     path: '/create',
-    component: () => import("@/pages/ArticleCreate.vue"),
+    component: () => import("@/pages/AddArticle.vue"),
     props: true
   },
   {
     path: '/article/:id',
-    component: () => import("@/pages/ArticleInfo.vue"),
+    component: () => import("@/pages/ArticleDetail.vue"),
     props: true
   }
 ]

@@ -1,7 +1,6 @@
 <template>
   <div class="container-fluid px-2 d-flex flex-column vh-100">
-    <nav-component />
-
+    <nav-component class="position-sticky top-0 z-3"/>
 
     <router-view />
   </div>
@@ -18,7 +17,6 @@ export default {
   name: 'App',
   components: {
     NavComponent
-
   },
 }
 </script>

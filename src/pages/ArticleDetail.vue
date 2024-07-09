@@ -3,8 +3,8 @@
     <div class="card">
       <div class="card-body">
         <h5 class="card-title fw-bold">{{article.id}}. {{article.title}}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{article.author}}</h6>
         <p class="card-text">{{article.desc}}</p>
-
       </div>
     </div>
   </div>
@@ -30,8 +30,6 @@ export default {
     ...mapGetters([
       'getArticles'
     ]),
-
-
   },
   methods: {
     findArticle() {
@@ -49,7 +47,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-
-</style>

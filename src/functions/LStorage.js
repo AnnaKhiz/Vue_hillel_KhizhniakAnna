@@ -1,46 +1,29 @@
 class LStorage {
-    #key = 'notes';
+    #key = 'articles';
     #currentId = 1
 
     constructor() {
-        const savedData = this.getItems();
+        const savedData = this.getArticles();
         if(!savedData.length) return;
         this.#currentId = ++savedData.at(-1).id
     }
 
-    getItems() {
+    getArticles() {
         const data = JSON.parse(localStorage.getItem(this.#key));
         return data ? data : [];
     }
-    saveItem(todoItem) {
-        const data = this.getItems();
+    saveArticle(article) {
+        const data = this.getArticles();
 
         data.push({
-            ...todoItem,
+            ...article,
             id: this.#currentId
         })
 
         this.#currentId += 1;
         localStorage.setItem(this.#key, JSON.stringify(data));
 
-        return this.getItems().at(-1)
-    }
-
-    #getItemIndexById(id) {
-        const data = this.getItems();
-
-        return data.findIndex(({id: todoItemId}) => {
-            return id === todoItemId
-        });
-    }
-
-    removeItem(id) {
-        const data = this.getItems();
-        const index = this.#getItemIndexById(id)
-        const removedItem = data.splice(index, 1)[0]
-        localStorage.setItem(this.#key, JSON.stringify(data));
-
-        return removedItem;
+        return this.getArticles().at(-1)
     }
 
 }
