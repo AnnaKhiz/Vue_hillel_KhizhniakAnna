@@ -3,7 +3,7 @@
     <div class="card">
       <div class="card-body">
         <h5 class="card-title fw-bold">{{article.id}}. {{article.title}}</h5>
-        <h6 class="card-subtitle mb-2 text-muted">{{article.author}}</h6>
+        <h6 class="card-subtitle mb-2 subtitle">{{article.author}}</h6>
         <p class="card-text">{{article.desc}}</p>
       </div>
     </div>
@@ -47,3 +47,10 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.subtitle {
+  font-size: 12px;
+  color: #b4b3b3;
+}
+</style>

@@ -1,6 +1,6 @@
 <template>
   <div class="align-items-start py-3 px-2 bg-body-secondary text-start flex-grow-1">
-    <form v-if="!isValid">
+    <form>
       <div class="mb-3">
         <label for="title" class="form-label">Title</label>
         <input
@@ -40,9 +40,6 @@
       <button type="submit" class="btn btn-outline-secondary" @click.prevent="publishArticle" :disabled="errors.length">Publish</button>
 
     </form>
-    <div v-else>
-      <h4 class="submit-message">The article added successfully! Redirecting to Article List...</h4>
-    </div>
   </div>
 </template>
 
@@ -102,26 +99,15 @@ export default {
       storage.saveArticle(this.newArticle);
       this.newArticle = {};
       this.errors = {};
-      this.timeoutId = setTimeout(() => {
-        this.$router.push('/');
-      }, 2000);
-
+      this.$router.push('/');
     }
   },
-
-  beforeUnmount() {
-    clearTimeout(this.timeoutId);
-  }
 }
 </script>
 
 <style scoped>
 .err-message {
   color: red;
-  font-size: 12px;
-}
-.submit-message {
-  color: green;
   font-size: 12px;
 }
 .textarea-desc {
