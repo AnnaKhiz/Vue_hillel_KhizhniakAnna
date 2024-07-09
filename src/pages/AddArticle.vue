@@ -1,6 +1,6 @@
 <template>
   <div class="align-items-start py-3 px-2 bg-body-secondary text-start flex-grow-1">
-    <form>
+    <form class="container">
       <div class="mb-3">
         <label for="title" class="form-label">Title</label>
         <input
