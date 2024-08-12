@@ -10,7 +10,7 @@ export const useToDoStore = defineStore('TodoStore', {
   getters: {
     getItemById: (state) => {
       state.getItems()
-      return (itemId) => state.todoList.find((item) => +item.id === +itemId)
+      return (itemId) => state.todoList.find((item) => +item.id === +itemId);
     },
   },
   actions: {
